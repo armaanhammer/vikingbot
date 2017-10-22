@@ -25,7 +25,7 @@ vikingbotMotors.set_SleepTime(2)
 
 #Test the movements
 vikingbotMotors.goForward()
-vikingbotMotors.sset_SleepTime(1)
+vikingbotMotors.set_SleepTime(1)
 vikingbotMotors.turnLeft()
 vikingbotMotors.set_SleepTime(1)
 vikingbotMotors.turnRight()
