@@ -76,22 +76,22 @@ class MotorController:
                 GPIO.output(self.PinBackwardW1, GPIO.LOW)
                 GPIO.output(self.PinForwardW2, GPIO.LOW)
 
-        def goBack(self):
+        def goForward(self):
                 GPIO.output(self.PinForwardW1, GPIO.HIGH)
                 GPIO.output(self.PinForwardW2, GPIO.HIGH)
                 GPIO.output(self.PinBackwardW1, GPIO.LOW)
                 GPIO.output(self.PinBackwardW2, GPIO.LOW)
-                print "going back"
+                print "going forward"
                 time.sleep(self.sleeptime)
                 GPIO.output(self.PinForwardW1, GPIO.LOW)
                 GPIO.output(self.PinForwardW2, GPIO.LOW)
 
-        def goForward(self):
+        def goBack(self):
                 GPIO.output(self.PinBackwardW1, GPIO.HIGH)
                 GPIO.output(self.PinBackwardW2, GPIO.HIGH)
                 GPIO.output(self.PinForwardW1, GPIO.LOW)
                 GPIO.output(self.PinForwardW2, GPIO.LOW)
-                print "going forward"
+                print "going back"
                 time.sleep(self.sleeptime)
                 GPIO.output(self.PinBackwardW1, GPIO.LOW)
                 GPIO.output(self.PinBackwardW2, GPIO.LOW)
