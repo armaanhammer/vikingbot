@@ -32,6 +32,15 @@ vikingbotMotors.turnRight()
 vikingbotMotors.set_SleepTime(2)
 vikingbotMotors.goBack()
 
+#Test singing frog
+GPIO.setup(19, GPIO.out)
+GPIO.output(19, GPIO.HIGH)
+print "Frog is singing"
+time.sleep(5)
+GPIO.output(19, GPIO.LOW)
+GPIO.output(19, GPIO.HIGH)
+GPIO.output(19, GPIO.LOW)
+
 #test for distance sensor
 #setup the distance sensor
 #ultrasonicSensorBack.setup_GPIO()
