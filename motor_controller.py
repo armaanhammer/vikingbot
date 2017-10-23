@@ -11,17 +11,19 @@ class MotorController:
                 self.PinBackwardW2 = 5
                 self.PinPWM_W1 = 22
                 self.PinPWM_W2 = 27
+                self.SingingFrog = 19
                 self.sleeptime = 1
                 self.p1 = None
                 self.p2 = None
 
-        def set_Pins(self, pin1, pin2, pin3, pin4, pin5, pin6):
+        def set_Pins(self, pin1, pin2, pin3, pin4, pin5, pin6, pin7):
                 self.PinForwardW1 = pin1
                 self.PinBackwardW1 = pin2
                 self.PinForwardW2 =  pin3
                 self.PinBackwardW2 = pin4
                 self.PinPWM_W1 = pin5
                 self.PinPWM_W2 = pin6
+                self.SingingFrog = pin7
 
         def set_SleepTime(self, time):
                 self.sleeptime = time
@@ -43,6 +45,7 @@ class MotorController:
                 GPIO.setup(self.PinBackwardW2, GPIO.OUT)
                 GPIO.setup(self.PinPWM_W1, GPIO.OUT)
                 GPIO.setup(self.PinPWM_W2, GPIO.OUT)
+                GPIO.setup(self.SingingFrog, GPIO.OUT)
 
         def setup_PWM(self):
                 self.p1 = GPIO.PWM(self.PinPWM_W1, 100)
@@ -96,5 +99,11 @@ class MotorController:
                 GPIO.output(self.PinBackwardW1, GPIO.LOW)
                 GPIO.output(self.PinBackwardW2, GPIO.LOW)
 
+        def frog(self):
+                GPIO.output(self.SingingFrog, GPIO.HIGH)
+                print "frog singing"
+                time.sleep(2)
+                GPIO.output(self.SingingFrog, GPIO.LOW)
+        
         def cleanup(self):
                 GPIO.cleanup()
