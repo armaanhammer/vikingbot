@@ -24,13 +24,6 @@ vikingbotMotors.set_motorSpeed(90,90)
 vikingbotMotors.set_SleepTime(2)
 
 #Test the movements
-vikingbotMotors.goForward()
-vikingbotMotors.set_SleepTime(1)
-vikingbotMotors.turnLeft()
-vikingbotMotors.set_SleepTime(1)
-vikingbotMotors.turnRight()
-vikingbotMotors.set_SleepTime(2)
-vikingbotMotors.goBack()
 
 #Test singing frog
 GPIO.setup(19, GPIO.OUT)
@@ -45,7 +38,18 @@ ultrasonicSensorBack.setup_GPIO()
 subprocess.call(["espeak","-s 120 -v en ", "Zebra is moving now"] , stdout=None, stderr=subprocess.STDOUT)
 while(True):
 #if distance is more than 10 cm. go back. Ig there is an obstacle stop
-        if (ultrasonicSensorBack.get_distance() > 10):
-                vikingbotMotors.goBack()
+#        if (ultrasonicSensorBack.get_distance() > 10):
+#                vikingbotMotors.goBack()
+
+    cmd = raw_input("Enter the command ")
+    if cmd == 'i' :
+        vikingbotMotors.goForward()
+    if cmd == 'k' :
+        vikingbotMotors.goBack()
+    if cmd == 'j' :
+        vikingbotMotors.turnLeft()
+    if cmd == 'l' :
+        vikingbotMotors.turnRight()
+     
 
 GPIO.cleanup()
