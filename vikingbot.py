@@ -18,7 +18,7 @@ vikingbotMotors.setup_GPIO(1,0)
 # setup and start PWM set the dulty cycles to 90
 vikingbotMotors.setup_PWM()
 vikingbotMotors.start_PWM()
-vikingbotMotors.set_motorSpeed(90,90)
+vikingbotMotors.set_motorSpeed(55,100)
 
 # set the delay between motions to 2 seconds
 vikingbotMotors.set_SleepTime(2)
@@ -29,7 +29,7 @@ vikingbotMotors.set_SleepTime(2)
 GPIO.setup(19, GPIO.OUT)
 GPIO.output(19, GPIO.HIGH)
 print "Frog is singing"
-vikingbotMotors.set_SleepTime(5)
+vikingbotMotors.set_SleepTime(15)
 GPIO.output(19, GPIO.LOW)
 
 #test for distance sensor

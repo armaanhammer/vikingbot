@@ -11,7 +11,7 @@ class MotorController:
                 self.PinBackwardW2 = 5
                 self.PinPWM_W1 = 22
                 self.PinPWM_W2 = 27
-                self.sleeptime = 1
+                self.sleeptime = 0
                 self.p1 = None
                 self.p2 = None
 
