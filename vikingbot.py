@@ -46,19 +46,36 @@ while(True):
         vikingbotMotors.set_motorSpeed(100,100)
         vikingbotMotors.set_SleepTime(2)
         vikingbotMotors.goForward()
-        
-    if cmd == 'i' :
-        vikingbotMotors.set_motorSpeed(100,100)
+    if cmd == '8' :
+        vikingbotMotors.set_motorSpeed(90,100)
         vikingbotMotors.set_SleepTime(2)
+        vikingbotMotors.goBack()
+    if cmd == 'i' :
+        vikingbotMotors.set_motorSpeed(90,100)
+        vikingbotMotors.set_SleepTime(1)
         vikingbotMotors.goBack()
     if cmd == 'l' :
         vikingbotMotors.set_motorSpeed(55,100)
-        vikingbotMotors.set_SleepTime(0.75)
+        vikingbotMotors.set_SleepTime(0.25)
         vikingbotMotors.turnLeft()
     if cmd == 'j' :
         vikingbotMotors.set_motorSpeed(55,100)
+        vikingbotMotors.set_SleepTime(0.25)
+        vikingbotMotors.turnRight()
+    if cmd == ';' :
+        vikingbotMotors.set_motorSpeed(55,100)
+        vikingbotMotors.set_SleepTime(0.75)
+        vikingbotMotors.turnLeft()
+    if cmd == 'h' :
+        vikingbotMotors.set_motorSpeed(55,100)
         vikingbotMotors.set_SleepTime(0.75)
         vikingbotMotors.turnRight()
+    if cmd == 'c' :
+        vikingbotMotors.set_motorSpeed(40,90)
+        vikingbotMotors.set_SleepTime(10)
+        vikingbotMotors.goBack()
      
+
+ 
 
 GPIO.cleanup()
