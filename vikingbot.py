@@ -43,12 +43,12 @@ while(True):
 
     cmd = raw_input("Enter the command ")
     if cmd == 'k' :
-        vikingbotMotors.set_motorSpeed(55,100)
+        vikingbotMotors.set_motorSpeed(100,100)
         vikingbotMotors.set_SleepTime(2)
         vikingbotMotors.goForward()
         
     if cmd == 'i' :
-        vikingbotMotors.set_motorSpeed(55,100)
+        vikingbotMotors.set_motorSpeed(100,100)
         vikingbotMotors.set_SleepTime(2)
         vikingbotMotors.goBack()
     if cmd == 'l' :
