@@ -43,7 +43,7 @@ def initialize_vikingbot(config_file):
 
 
 def command_processor(data, my_vikingbot):
-    print('Data: {}'.format(data))
+    print 'Data: {}'.format(data)
 
     items = data.split()
     if len(items) == 1:
@@ -57,37 +57,39 @@ def command_processor(data, my_vikingbot):
     else:
         return 'ERROR: invalid command format'
 
-    print('Command: {}'.format(command))
-    print('Iteration: {}'.format(iteration))
+    print 'Command: {}'.format(command)
+    print 'Iteration: {}'.format(iteration)
 
     commands = [
-        'turn_left',
-        'turn_right',
-        'walk_forward',
-        'walk_backward',
-        'front_dancing_1',
-        'front_dancing_2',
-        'back_dancing_1',
-        'back_dancing_2',
+        'go_forward' #new
+        'go_back' #new
+        'turn_left' #modify
+        'turn_right' #modify
+        'walk_forward', #remove
+        'walk_backward', #remove
+        'front_dancing_1', #remove
+        'front_dancing_2', #remove
+        'back_dancing_1', #remove
+        'back_dancing_2', #remove
     ]
 
     if command == 'turn_left':
         for i in range(iteration):
-            print('turning left...')
+            print 'turning left...'
             my_vikingbot.turn_left()
 
         return ('Turning Left {} times'.format(iteration))
 
     elif command == 'turn_right':
         for i in range(iteration):
-            print('turning right...')
+            print 'turning right...'
             my_vikingbot.turn_right()
 
         return ('Turning Right {} times'.format(iteration))
 
     elif command == 'walk_forward':
         for i in range(iteration):
-            print('walking forward...')
+            print 'walking forward...'
             if i%2:
                 my_vikingbot.left_right_left_step()
             else:
@@ -97,7 +99,7 @@ def command_processor(data, my_vikingbot):
 
     elif command == 'walk_backward':
         for i in range(iteration):
-            print('walking backward...')
+            print 'walking backward...'
             if i%2:
                 my_vikingbot.left_right_left_step_back()
             else:
@@ -106,61 +108,61 @@ def command_processor(data, my_vikingbot):
         return ('Walking Backward {} times'.format(iteration))
 
     elif command == 'front_dancing_1':
-        print('getting ready to dance...')
+        print 'getting ready to dance...')
         my_vikingbot.reposition_center_legs(0)
         my_vikingbot.move_center_legs(raise_value=100)
 
-        print('ready to dance...')
+        print 'ready to dance...')
         for i in range(iteration):
-            print('front dancing...')
+            print 'front dancing...')
             my_vikingbot.front_leg_dancing(step=1)
 
-        print('cleaning up from dancing...')
+        print 'cleaning up from dancing...')
         my_vikingbot.reposition_center_legs(100)
 
         return ('Dancing Front Legs {} times'.format(iteration))
 
     elif command == 'front_dancing_2':
-        print('getting ready to dance...')
+        print 'getting ready to dance...')
         my_vikingbot.reposition_center_legs(0)
         my_vikingbot.move_center_legs(raise_value=100)
 
-        print('ready to dance...')
+        print 'ready to dance...')
         for i in range(iteration):
-            print('front dancing...')
+            print 'front dancing...')
             my_vikingbot.front_leg_dancing(step=2)
 
-        print('cleaning up from dancing...')
+        print 'cleaning up from dancing...')
         my_vikingbot.reposition_center_legs(100)
 
         return ('Dancing Front Legs {} times'.format(iteration))
 
     elif command == 'back_dancing_1':
-        print('getting ready to dance...')
+        print 'getting ready to dance...')
         my_vikingbot.reposition_center_legs(100)
         my_vikingbot.move_center_legs(raise_value=100)
 
-        print('ready to dance...')
+        print 'ready to dance...')
         for i in range(iteration):
-            print('front dancing...')
+            print 'front dancing...')
             my_vikingbot.back_leg_dancing(step=1)
 
-        print('cleaning up from dancing...')
+        print 'cleaning up from dancing...')
         my_vikingbot.reposition_center_legs(100)
 
         return ('Dancing Back Legs {} times'.format(iteration))
 
     elif command == 'back_dancing_2':
-        print('getting ready to dance...')
+        print 'getting ready to dance...')
         my_vikingbot.reposition_center_legs(100)
         my_vikingbot.move_center_legs(raise_value=100)
 
-        print('ready to dance...')
+        print 'ready to dance...')
         for i in range(iteration):
-            print('front dancing...')
+            print 'front dancing...')
             my_vikingbot.back_leg_dancing(step=2)
 
-        print('cleaning up from dancing...')
+        print 'cleaning up from dancing...')
         my_vikingbot.reposition_center_legs(100)
 
         return ('Dancing Back Legs {} times'.format(iteration))
@@ -173,7 +175,7 @@ def command_processor(data, my_vikingbot):
         return temp
 
     else:
-        print('ERROR: command not recognized: {}'.format(command))
+        print 'ERROR: command not recognized: {}'.format(command)
         return 'Command not found!'
 
 def listenToClient(client, address, my_vikingbot):
@@ -183,7 +185,7 @@ def listenToClient(client, address, my_vikingbot):
             data = client.recv(size).decode()
             if data:
                 # Read command from client
-                print("from connected user: " + str(data))
+                print "from connected user: " + str(data)
                 response = command_processor(data, my_vikingbot)
 
                 # data = str(data).upper()
@@ -204,14 +206,14 @@ def Main(host, port, config_file):
     while True:
         client, address = mySocket.accept()
         client.settimeout(300)
-        print ("Connection from: " + str(address))
+        print ("Connection from: " + str(address)
         listenToClient(client, address, my_vikingbot)
 
 if __name__ == '__main__':
     args = get_args()
 
-    print('Host: {}'.format(args.host))
-    print('Port: {}'.format(args.port))
-    print('Config File: {}'.format(args.config_file))
+    print 'Host: {}'.format(args.host)
+    print 'Port: {}'.format(args.port)
+    print 'Config File: {}'.format(args.config_file)
 
     Main(args.host, args.port, args.config_file)
