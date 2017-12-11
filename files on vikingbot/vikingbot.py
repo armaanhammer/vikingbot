@@ -35,7 +35,7 @@ GPIO.output(19, GPIO.LOW)
 #test for distance sensor
 #setup the distance sensor
 ultrasonicSensorBack.setup_GPIO()
-subprocess.call(["espeak","-s 120 -v en ", "Zebra is moving now"] , stdout=None, stderr=subprocess.STDOUT)
+#subprocess.call(["espeak","-s 120 -v en ", "Zebra is moving now"] , stdout=None, stderr=subprocess.STDOUT)
 while(True):
 #if distance is more than 10 cm. go back. Ig there is an obstacle stop
 #        if (ultrasonicSensorBack.get_distance() > 10):
@@ -74,8 +74,8 @@ while(True):
         vikingbotMotors.set_motorSpeed(40,90)
         vikingbotMotors.set_SleepTime(10)
         vikingbotMotors.goBack()
-     
 
- 
+
+
 
 GPIO.cleanup()

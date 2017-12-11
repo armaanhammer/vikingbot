@@ -1,9 +1,49 @@
+import motor_controller as MC
+import ultrasonic as US
+import RPi.GPIO as GPIO
+import subprocess
+
 import argparse
 import socket
 import time
 #import yaml
 
 #from vikingbot import vikingbot_12DOF
+
+
+#set GPIO mode to BCM
+GPIO.setmode(GPIO.BCM)
+
+# create objects for motor controller and distance sensor
+vikingbotMotors = MC.MotorController()
+ultrasonicSensorBack = US.Ultrasonic()
+
+#GPIO.cleanup()
+
+# setup the motors
+vikingbotMotors.setup_GPIO(1,0)
+
+# setup and start PWM set the dulty cycles to 90
+vikingbotMotors.setup_PWM()
+vikingbotMotors.start_PWM()
+vikingbotMotors.set_motorSpeed(55,100)
+
+# set the delay between motions to 2 seconds
+vikingbotMotors.set_SleepTime(2)
+
+#Test the movements
+
+#Test singing frog
+GPIO.setup(19, GPIO.OUT)
+GPIO.output(19, GPIO.HIGH)
+print "Frog is singing"
+vikingbotMotors.set_SleepTime(15)
+GPIO.output(19, GPIO.LOW)
+
+#test for distance sensor
+#setup the distance sensor
+ultrasonicSensorBack.setup_GPIO()
+
 
 def get_args():
     parser = argparse.ArgumentParser(description='vikingbot server.')
@@ -25,7 +65,7 @@ def get_args():
 #            default='config_12DOF.yaml',
 #            help='vikingbot configuration file')
 #
-#    return parser.parse_args()
+    return parser.parse_args()
 
 #def initialize_vikingbot(config_file):
 #    # open config file
@@ -42,7 +82,8 @@ def get_args():
 #    return my_vikingbot
 
 
-def command_processor(data, my_vikingbot):
+#def command_processor(data, my_vikingbot):
+def command_processor(data):
     print 'Data: {}'.format(data)
 
     items = data.split()
@@ -123,7 +164,8 @@ def listenToClient(client, address):
             if data:
                 # Read command from client
                 print "from connected user: " + str(data)
-                response = command_processor(data, my_vikingbot)
+#                response = command_processor(data, my_vikingbot)
+                response = command_processor(data)
 
                 # data = str(data).upper()
                 client.send(response.encode())
@@ -133,7 +175,8 @@ def listenToClient(client, address):
             client.close()
             return False
 
-def Main(host, port, config_file):
+#def Main(host, port, config_file):
+def Main(host, port):
 #    my_vikingbot = initialize_vikingbot(config_file)
 
     mySocket = socket.socket()
@@ -143,7 +186,7 @@ def Main(host, port, config_file):
     while True:
         client, address = mySocket.accept()
         client.settimeout(300)
-        print ("Connection from: " + str(address)
+        print "Connection from: " + str(address)
 #        listenToClient(client, address, my_vikingbot)
         listenToClient(client, address)
 
