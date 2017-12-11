@@ -36,7 +36,7 @@ vikingbotMotors.set_SleepTime(2)
 #Test singing frog
 GPIO.setup(19, GPIO.OUT)
 GPIO.output(19, GPIO.HIGH)
-print "Frog is singing"
+print "David is singing"
 vikingbotMotors.set_SleepTime(15)
 GPIO.output(19, GPIO.LOW)
 
