@@ -6,7 +6,7 @@ def get_args():
 
     parser.add_argument(
             '--host',
-            default='192.168.0.108',
+            default='192.168.0.101',
             help='host ip of the vikingbot')
 
     parser.add_argument(
