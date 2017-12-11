@@ -113,7 +113,6 @@ def Main(host, port):
 
         ## Morphological Closing - This is done to fill holes insie the detected object.
         ## This is done by first dilation then eroding the image
-
         target_object = cv2.dilate(target_object,cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(5,5)))
         target_object = cv2.erode(target_object,cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(5,5)))
 
