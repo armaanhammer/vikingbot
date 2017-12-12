@@ -20,3 +20,6 @@ Our control structure is:
         * watch through the webcam, 
         * determine obstacle locations, 
         * and send directives to the server running on the vikingbot. 
+        
+Once we make the OpenCV algorithms more robust in a setting with two degrees of freedom (allowing the scene to move left and right in the X and Y spatial dimensions, on the VikingBot), we will modify the project for three degrees of freedom (adding compenation for the scene to move up and down in the Z spatial dimension, on the HROS1).
+
