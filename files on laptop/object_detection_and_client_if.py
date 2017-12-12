@@ -150,15 +150,16 @@ def Main(host, port):
             Y = int(Y_r)
 
             # Decide to go forward or turn left or right
-            if X <= (width * 1/3): #left third of FOV (field of view)
-                directive = 'go_forward 0.1'
-            elif (width * 1/3) < X <= (width * 2/3): #middle third of FOV
-                if random.randint(0,1):
-                    directive = 'turn_left 0.1'
+            if X <= (width * 1/5): #left third of FOV (field of view)
+                directive = 'go_forward 0.5'
+            elif (width * 1/5) < X <= (width * 4/5): #middle third of FOV
+                blarg = random.randint(0,20)
+                if blarg > 1:
+                    directive = 'turn_left 0.5'
                 else:
-                    directive = 'turn_right 0.1'
+                    directive = 'turn_left 0.5'
             else: #right third of FOV
-                directive = 'go_forward 0.1'
+                directive = 'go_forward 0.5'
 
         # print center of mass of object and decision
         print "X: ", str(X).rjust(4), "Y: ", str(Y).rjust(4), "  ", directive
@@ -171,6 +172,19 @@ def Main(host, port):
             print '\nmessage exists. Sending. '
             mySocket.send(message.encode())
             message = None
+
+#        # psuedo-code:
+#        if not child_pid:
+#            child_pid = fork()
+#            if child_pid: #I'm the parent
+#                keep going
+#            else: #I'm the child.
+#                Wait for the socket
+#                return the value from the socket
+#                tell parent to set child_pid to None (null)
+#                kill myself
+#        else: #child alrady exists
+#            keep going
 
         # check if data back from vikingbot
         data = mySocket.recv(1024).decode()
@@ -201,6 +215,7 @@ def Main(host, port):
     cap.release()
     cv2.destroyAllWindows()
 
+    # Releast the socket
     mySocket.close()
 
 

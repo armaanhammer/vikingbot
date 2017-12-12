@@ -1,3 +1,5 @@
+# Intended to be run in Python 2
+
 import os
 
 def child():
@@ -11,7 +13,7 @@ def parent():
          child()
       else:
          pids = (os.getpid(), newpid)
-         print "parent: %d, child: %d\n" % pids 
+         print "parent: %d, child: %d\n" % pids
       reply = raw_input("q for quit / c for new fork")
       if reply == 'c':
           continue
